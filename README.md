@@ -1,1 +1,1 @@
-# Cable-Length-Counter-with-Incremental-Rotary-Encoder
+# Cable-Length-Measurement-with-Incremental-Rotary-Encoder
