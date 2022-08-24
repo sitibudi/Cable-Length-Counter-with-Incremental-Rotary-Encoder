@@ -13,16 +13,16 @@ LiquidCrystal_I2C lcd(0x27, 16, 2);
 #define ENCODER_PINB 3
 
 //DEFINE PIN BUTTON 
-#define rst_button 11
+#define rst_button 7
 #define A_button 4  // 50 M
 #define B_button 5  // 70 M
 #define C_button 6  // 90 M
 
 //DEFINE PIN LED INDIKATOR
-#define led_kuning 8
-#define led_hijau  9
+#define led_kuning 9
+#define led_hijau  10
 
-#define buzzer 10
+#define buzzer 8
 
 #define PI 3.1415926535897932384626433832795
 float d = 96.2; //IN MM
@@ -70,7 +70,7 @@ void setup() {
   pinMode(A_button, INPUT_PULLUP);
   pinMode(B_button, INPUT_PULLUP);
   pinMode(C_button, INPUT_PULLUP);
-  pinMode(LED_BUILTIN, OUTPUT);
+ 
   pinMode(buzzer, OUTPUT);
  
   pinMode(led_kuning,OUTPUT);
@@ -88,7 +88,7 @@ void setup() {
   lcd.setCursor(2,0);
   lcd.print("CABLE LENGTH");
   lcd.setCursor(5,1);
-  lcd.print("COUNTER");
+  lcd.print("MEASUREMENT");
   delay(2000);
   lcd.clear();
   
@@ -157,7 +157,8 @@ void loop() {
       lcd.setCursor(5,0);
       lcd.print("50 Meter");
       digitalWrite(led_kuning,HIGH);
-      if(result>1){
+      digitalWrite(led_hijau,LOW);
+      if(result>50){
         digitalWrite(buzzer,HIGH);
       }
       else{
@@ -170,7 +171,8 @@ void loop() {
       lcd.setCursor(5,0);
       lcd.print("70 Meter");
       digitalWrite(led_kuning,HIGH);
-      if(result>2){
+      digitalWrite(led_hijau,LOW);
+      if(result>70){
         digitalWrite(buzzer,HIGH);
       }
       else{
@@ -183,7 +185,8 @@ void loop() {
       lcd.setCursor(5,0);
       lcd.print("90 Meter");
       digitalWrite(led_kuning,HIGH);
-      if(result>3){
+      digitalWrite(led_hijau,LOW);
+      if(result>90){
         digitalWrite(buzzer,HIGH);
       }
       else{
